@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  flask_demo:
+    build:
+      context: .
+      dockerfile: ./docker/back.Dockerfile
+
+networks:
+  default:
+      external:
+          name: sharpnet
