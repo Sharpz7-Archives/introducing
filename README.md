@@ -9,7 +9,7 @@ A Tool that allows for a random, fake person to come to life!
 ## Backend
 
 ```bash
-    poetry install --dev
+    poetry install
     poetry run flask run --host=0.0.0.0 -p 5000
 ```
 

@@ -6,7 +6,7 @@ import requests
 from requests_html import HTMLSession
 
 
-def get_fake_face():
+def get():
     """
     Returns a fake face
     """

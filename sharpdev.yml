@@ -11,6 +11,6 @@ scripts:
     poetry run flask run --host=0.0.0.0 -p 5000
 
   online: |
-    sudo docker-compose -f docker/back.docker-compose.yml up --build
+    sudo docker-compose -f docker/back.docker-compose.yml up --build --remove-orphans
 
 

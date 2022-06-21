@@ -8,6 +8,6 @@ def test_faces():
     Should assert that output contains https://this-person-does-not-exist.com/img/avatar and jpg
     """
 
-    output = faces.get_fake_face()
+    output = faces.get()
     assert 'https://this-person-does-not-exist.com/img/avatar' in output
     assert 'jpg' in output
