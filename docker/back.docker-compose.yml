@@ -4,7 +4,7 @@ services:
   flask_demo:
     build:
       context: .
-      dockerfile: ./docker/back.Dockerfile
+      dockerfile: back.Dockerfile
 
 networks:
   default:

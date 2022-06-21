@@ -9,5 +9,12 @@ def test_version():
 
 
 def test_faces():
-    """Testing faces"""
-    assert faces.get_fake_face() == 'faces'
+    """
+    Testing faces
+
+    Should assert that output contains https://this-person-does-not-exist.com/img/avatar and jpg
+    """
+
+    output = faces.get_fake_face()
+    assert 'https://this-person-does-not-exist.com/img/avatar' in output
+    assert 'jpg' in output
