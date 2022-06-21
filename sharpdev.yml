@@ -5,7 +5,7 @@ scripts:
   poetry: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
 
   tests: |
-    poetry run pytest
+    poetry run pytest ./tests/
 
   run : |
     poetry run flask run --host=0.0.0.0 -p 5000
