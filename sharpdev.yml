@@ -13,4 +13,7 @@ scripts:
   online: |
     sudo docker-compose -f docker/back.docker-compose.yml up --build --remove-orphans
 
+  install: |
+    poetry run python introducing/install.py
+
 

@@ -4,15 +4,21 @@ https://www.goodhousekeeping.com/life/parenting/a31401884/gender-neutral-baby-na
 
 MIN_BACKSTORY_LENGTH = 170
 
+# Using some kind of brown corpus might make verb checking easier
+# TODO
+# - Create THEM var and THEY var for you following words
+# - Rename Tenses
 TENSES = [
-    (" yours ", " theirs "),
-    (" your ", " their "),
+    ("yourself", "themselves"),
+    ("yours ", "theirs "),
+    ("your ", "their "),
     ("Your ", "Their "),
-    (" you ", " they "),
-    ("You ", "They "),
-    ("theynger", "younger")
+    ("You", "They"),
+    ("you.", "them."),
+    ("you were", "they were"),
+    ("you how", "them how"),
+    ("you to", "them to"),
 ]
-
 
 NAMES = [
     "Bellamy",
