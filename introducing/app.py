@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
 
-from introducing import faces, location, text
+from introducing import faces, location, text, urls
 
 app = Flask(__name__, static_folder="./static")
 
+cache = {}
 
 @app.route('/')
 def default():
@@ -22,13 +23,19 @@ def get_intro():
 
     send = {}
 
-    loc, background = location.get()
+    print("UPDATING CACHE")
+    urls.update_cache(cache)
+    print("FINISHED")
 
-    send["profile_picture"] = faces.get()
+    loc, background = location.get(cache)
+    print("Location handled")
+
+    send["profile_picture"] = faces.get(cache)
     send["location"] = loc
     send["background_image"] = background
     send["name"] = text.get_name()
     send["age"] = text.get_age()
-    send["backstory"] = text.get_backstory()
+    send["backstory"] = text.get_backstory(cache)
+    print("Backstory Handled")
 
     return jsonify(send)

@@ -4,22 +4,23 @@ Scrape https://earthview.withgoogle.com/ for a single location
 
 import re
 
-import requests
+from introducing.urls import pre_download
 
+URL = "https://earthview.withgoogle.com/"
 
-def get():
+@pre_download(url=URL)
+def get(cache):
     """
     Returns a fake face
     """
 
-    url = "https://earthview.withgoogle.com/"
-
     # get url
-    content = requests.get(url).text
+    content = str(cache[URL].text)
 
     # regex to look for href="/map/X"
     # where X is the location
     regex = r'href="/map/([^"]+)"'
+
     tag = re.search(regex, content).group(1)
 
     # split tag by -

@@ -2,9 +2,12 @@ import random
 import re
 
 import names
-import requests
 
 from introducing.constants import NAMES, MIN_BACKSTORY_LENGTH, TENSES
+from introducing.urls import pre_download, update_one
+
+
+URL = "https://www.kassoon.com/dnd/backstory-generator/"
 
 
 def get_age():
@@ -26,16 +29,16 @@ def get_name():
     return f"{first} {last}"
 
 
-def get_backstory():
+@pre_download(url=URL)
+def get_backstory(cache):
     """
     Backstory Generator
     """
 
     while True:
-        url = "https://www.kassoon.com/dnd/backstory-generator/"
 
         # get url
-        content = requests.get(url).text
+        content = str(cache[URL].text)
 
         # regex = r'<h2>Life</h2>([^"]+)<p>'
         # tag = re.search(regex, content).group(1)
@@ -48,6 +51,9 @@ def get_backstory():
 
         if len(backstory) > MIN_BACKSTORY_LENGTH:
             break
+
+        else:
+            update_one(cache, URL)
 
 
     # convert to correct tense
