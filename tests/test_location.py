@@ -1,4 +1,6 @@
-from introducing import location
+from introducing import location, urls
+
+cache = {}
 
 
 def test_location():
@@ -7,7 +9,8 @@ def test_location():
 
     """
 
-    loc = location.get()
+    urls.update_cache(cache)
+    loc = location.get(cache)
 
     print(loc)
 

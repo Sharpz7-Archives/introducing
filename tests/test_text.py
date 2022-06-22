@@ -1,5 +1,8 @@
-from introducing import text
+from introducing import text, urls
 from introducing.constants import MIN_BACKSTORY_LENGTH, TENSES
+
+
+cache = {}
 
 
 def test_backstory():
@@ -8,7 +11,8 @@ def test_backstory():
 
     """
 
-    backstory = text.get_backstory()
+    urls.update_cache(cache)
+    backstory = text.get_backstory(cache)
 
     print(backstory)
     print(len(backstory))

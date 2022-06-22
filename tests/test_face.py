@@ -1,5 +1,6 @@
-from introducing import faces
+from introducing import faces, urls
 
+cache = {}
 
 def test_faces():
     """
@@ -8,6 +9,7 @@ def test_faces():
     Should assert that output contains https://this-person-does-not-exist.com/img/avatar and jpg
     """
 
-    output = faces.get()
+    urls.update_cache(cache)
+    output = faces.get(cache)
     assert 'https://this-person-does-not-exist.com/img/avatar' in output
     assert 'jpg' in output
