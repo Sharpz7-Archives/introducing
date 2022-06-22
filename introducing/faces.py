@@ -5,7 +5,10 @@ Scrape https://this-person-does-not-exist.com/en for a single face
 import requests
 from requests_html import HTMLSession
 
+from introducing.urls import pre_download
 
+
+@pre_download(url="https://this-person-does-not-exist.com")
 def get():
     """
     Returns a fake face
