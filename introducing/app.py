@@ -1,36 +1,41 @@
-from flask import Flask, jsonify, request
-from introducing import faces
+from flask import Flask, jsonify
 
-app = Flask(__name__)
+from introducing import faces, location, text, urls
 
-incomes = [
-    { 'description': 'salary', 'amount': 50000 }
-]
+app = Flask(__name__, static_folder="./static")
 
+cache = {}
 
 @app.route('/')
-def get_incomes():
+def default():
     """
     Returns all incomes
     """
 
-    return jsonify(incomes)
+    return app.send_static_file('default.html')
 
 
-@app.route('/incomes', methods=['POST'])
-def add_income():
+@app.route('/introducing')
+def get_intro():
     """
-    Adds a new income
-    """
-
-    incomes.append(request.get_json())
-    return '', 204
-
-
-@app.route('/face')
-def get_face():
-    """
-    Returns a fake face
+    Returns an Introduction of someone
     """
 
-    return faces.get_fake_face()
+    send = {}
+
+    print("UPDATING CACHE")
+    urls.update_cache(cache)
+    print("FINISHED")
+
+    loc, background = location.get(cache)
+    print("Location handled")
+
+    send["profile_picture"] = faces.get(cache)
+    send["location"] = loc
+    send["background_image"] = background
+    send["name"] = text.get_name()
+    send["age"] = text.get_age()
+    send["backstory"] = text.get_backstory(cache)
+    print("Backstory Handled")
+
+    return jsonify(send)

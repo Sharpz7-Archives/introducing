@@ -1,12 +1,6 @@
-from introducing import __version__
-from introducing import faces
+from introducing import faces, urls
 
-
-def test_version():
-    """Testing version"""
-
-    assert __version__ == '0.1.0'
-
+cache = {}
 
 def test_faces():
     """
@@ -15,6 +9,7 @@ def test_faces():
     Should assert that output contains https://this-person-does-not-exist.com/img/avatar and jpg
     """
 
-    output = faces.get_fake_face()
+    urls.update_cache(cache)
+    output = faces.get(cache)
     assert 'https://this-person-does-not-exist.com/img/avatar' in output
     assert 'jpg' in output
