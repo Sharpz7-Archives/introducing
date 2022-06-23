@@ -26,9 +26,9 @@ def get_age(profile_picture):
     https://labs.everypixel.com/api/account/balance
     """
 
-    if os.environ["TRUE_AGE"] == "TRUE":
-        client_id = os.environ["CLIENT_ID"]
-        client_secret = os.environ["CLIENT_SECRET"]
+    if os.environ.get("TRUE_AGE", "FALSE") == "TRUE":
+        client_id = os.environ.get("CLIENT_ID")
+        client_secret = os.environ.get("CLIENT_SECRET")
         params = {'url': profile_picture}
         quality = requests.get(
             'https://api.everypixel.com/v1/faces',
@@ -37,6 +37,8 @@ def get_age(profile_picture):
 
         # Incase something goes wrong, we will just return a random age
         if quality["status"] == "error":
+            logging.info("Something went wrong with the age: %s", quality["message"])
+
             return random.randint(14, 99)
 
         return int(quality["faces"][0]["age"])
