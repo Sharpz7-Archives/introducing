@@ -21,7 +21,6 @@
 ![](https://files.mcaq.me/x02ar.jpg)
 
 ### Uses [GRPC-IO](https://grpc.io/) and [Flask](https://flask.palletsprojects.com/en/2.1.x/)
-<br>
 
 # Quickstart Guide
 
