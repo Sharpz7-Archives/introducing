@@ -1,22 +1,48 @@
 import logging
+import os
 import random
 import re
 
 import names
+import requests
 
 from introducing.constants import (EASTER_EGG_REPLACERS, MIN_BACKSTORY_LENGTH,
-                                   NAMES, REPLACERS, THEM_WORDS, THEY_WORDS)
+                                   NAMES, REPLACERS, THEM_WORDS, THEY_WORDS,
+                                   TITLES)
 from introducing.urls import pre_download, update_one
 
 URL = "https://www.kassoon.com/dnd/backstory-generator/"
 
 
-def get_age():
+def get_age(profile_picture):
     """
     Return a persons age.
+
+    If TRUE_AGE is set to True, then the age will be an AI
+    generated age.
+
+    If TRUE_AGE is set to False, then the age will be random
+
+    https://labs.everypixel.com/api/account/balance
     """
 
-    return random.randrange(14, 99)
+    if os.environ["TRUE_AGE"] == "TRUE":
+        client_id = os.environ["CLIENT_ID"]
+        client_secret = os.environ["CLIENT_SECRET"]
+        params = {'url': profile_picture}
+        quality = requests.get(
+            'https://api.everypixel.com/v1/faces',
+            params=params,
+            auth=(client_id, client_secret)).json()
+
+        # Incase something goes wrong, we will just return a random age
+        if quality["status"] == "error":
+            return random.randint(14, 99)
+
+        return int(quality["faces"][0]["age"])
+
+    else:
+        return random.randint(14, 99)
 
 
 def get_name():
@@ -28,6 +54,14 @@ def get_name():
     last = names.get_last_name()
 
     return f"{first} {last}"
+
+
+def get_title():
+    """
+    Get a random title
+    """
+
+    return random.choice(TITLES)
 
 
 @pre_download(url=URL)

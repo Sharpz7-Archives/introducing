@@ -39,10 +39,10 @@ def get_intro():
     logging.info("FINISHED")
 
     loc, background = location.get(cache)
-
     profile_picture = faces.get(cache)
     name = text.get_name()
-    age = text.get_age()
+    title = text.get_title()
+    age = text.get_age(profile_picture)
     backstory = text.get_backstory(cache)
 
     send["profile_picture"] = profile_picture
@@ -51,7 +51,7 @@ def get_intro():
     send["name"] = name
     send["age"] = age
     send["backstory"] = backstory
-    send["title"] = "Student"
+    send["title"] = title
 
     response = jsonify(send)
     response.headers.add('Access-Control-Allow-Origin', '*')

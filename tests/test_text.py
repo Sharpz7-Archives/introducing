@@ -1,5 +1,5 @@
 from introducing import text, urls
-from introducing.constants import MIN_BACKSTORY_LENGTH
+from introducing.constants import MIN_BACKSTORY_LENGTH, TITLES
 
 cache = {}
 
@@ -26,9 +26,9 @@ def test_age():
     Test Age is within range
     """
 
-    age = text.get_age()
+    age = text.get_age("https://files.mcaq.me/h9772.jpg")
 
-    assert age in range(14, 99)
+    assert age in range(1, 99)
 
 
 def test_name():
@@ -39,3 +39,14 @@ def test_name():
     name = text.get_name()
 
     assert isinstance(name, str)
+
+
+def test_title():
+    """
+    Test Title is valid string
+    """
+
+    title = text.get_title()
+
+    assert isinstance(title, str)
+    assert title in TITLES

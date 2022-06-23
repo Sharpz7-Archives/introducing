@@ -32,7 +32,6 @@ EASTER_EGG_REPLACERS = [
     ("crime", "Project Management"),
     ("sword", "laptop"),
     ("gods", "Linux Founders"),
-    ("lore", "C Code"),
     ("hermit", "Visual Basic Dev")
 ]
 
@@ -40,6 +39,24 @@ THEM_WORDS = ["to", "how", "in", "the", "so", "survive", "for"]
 THEY_WORDS = [
     "were", "ed", "ld", "nd", "ever", "became", "want", "woke", "saw", "still"
     ]
+
+TITLES = [
+    "C Programmer",
+    "DevOps Engineer",
+    "Artist",
+    "Software Engineer",
+    "Actor",
+    "Writer",
+    "Musician",
+    "Python Developer",
+    "Java Developer",
+    "C++ Developer",
+    "C# Developer",
+    "Banker",
+    "CEO",
+    "Website Developer",
+    "Investor"
+]
 
 NAMES = [
     "Bellamy",
