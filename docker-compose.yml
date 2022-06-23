@@ -4,17 +4,9 @@ services:
   introducing:
     build:
       context: .
-      dockerfile: ./docker/back.Dockerfile
+      dockerfile: ./docker/Dockerfile
 
     env_file: .env
-
-    volumes:
-    - "mcaq_projects:/home/coder/code-server"
-
-
-volumes:
-  mcaq_projects:
-    external: True
 
 networks:
   default:
