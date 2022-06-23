@@ -1,6 +1,5 @@
 from introducing import text, urls
-from introducing.constants import MIN_BACKSTORY_LENGTH, TENSES
-
+from introducing.constants import MIN_BACKSTORY_LENGTH
 
 cache = {}
 
@@ -18,7 +17,7 @@ def test_backstory():
     print(len(backstory))
 
     assert len(backstory) > MIN_BACKSTORY_LENGTH
-    assert all(change[0] not in backstory for change in TENSES)
+    assert "you" not in backstory
     assert ". " in backstory
 
 

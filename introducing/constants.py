@@ -15,18 +15,18 @@ REPLACERS = [
     ("you.", "them."),
 
     # Mistake in backstory generator
-    ("ofcivilization", "of civilization"),
+    ("ofcivilization", "of civilization")
 ]
 
 EASTER_EGG_REPLACERS = [
     ("wizard", "programmer"),
     ("paladin", "COBOL Programmer"),
-    ("war", "art"),
+    ("war", "cheese-making"),
     ("magic", "programming"),
     ("guild", "MLH Club"),
     ("monster", "COBOL Programmer"),
     ("religion", "Github Org"),
-    ("religious", "Github"),
+    ("religious", "programming"),
     ("faith", "Tech Stack"),
     ("lord", "Senior Developer"),
     ("crime", "Project Management"),
@@ -36,8 +36,10 @@ EASTER_EGG_REPLACERS = [
     ("hermit", "Visual Basic Dev")
 ]
 
-THEM_WORDS = ["to", "how", "in", "the", "so", "survive"]
-THEY_WORDS = ["were", "ed", "ld", "nd", "ever", "became", "want", "woke"]
+THEM_WORDS = ["to", "how", "in", "the", "so", "survive", "for"]
+THEY_WORDS = [
+    "were", "ed", "ld", "nd", "ever", "became", "want", "woke", "saw", "still"
+    ]
 
 NAMES = [
     "Bellamy",

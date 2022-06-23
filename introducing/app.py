@@ -1,3 +1,6 @@
+import logging
+import os
+
 from flask import Flask, jsonify
 
 from introducing import faces, location, text, urls
@@ -5,6 +8,14 @@ from introducing import faces, location, text, urls
 app = Flask(__name__, static_folder="./static")
 
 cache = {}
+
+if os.environ["FLASK_ENV"] == "development":
+    app.debug = True
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
 @app.route('/')
 def default():
@@ -15,7 +26,7 @@ def default():
     return app.send_static_file('default.html')
 
 
-@app.route('/introducing')
+@app.route('/introducing', methods=['GET'])
 def get_intro():
     """
     Returns an Introduction of someone
@@ -23,12 +34,12 @@ def get_intro():
 
     send = {}
 
-    print("UPDATING CACHE")
+    logging.info("UPDATING CACHE")
     urls.update_cache(cache)
-    print("FINISHED")
+    logging.info("FINISHED")
 
     loc, background = location.get(cache)
-    print("Location handled")
+    logging.info("Location handled")
 
     send["profile_picture"] = faces.get(cache)
     send["location"] = loc
@@ -36,6 +47,9 @@ def get_intro():
     send["name"] = text.get_name()
     send["age"] = text.get_age()
     send["backstory"] = text.get_backstory(cache)
-    print("Backstory Handled")
+    send["title"] = "Student"
+    logging.info("Backstory Handled")
 
-    return jsonify(send)
+    response = jsonify(send)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response

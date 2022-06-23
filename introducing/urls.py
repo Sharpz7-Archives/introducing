@@ -1,7 +1,7 @@
 import asyncio
+import logging
 
 from requests_html import AsyncHTMLSession, HTMLSession
-
 
 urls_store = []
 
@@ -24,7 +24,7 @@ async def get_link(url, asession):
     """
     r = await asession.get(url)
 
-    print(f"Finished getting url {url}")
+    logging.info("Finished getting url %s", url)
     return (url, r)
 
 

@@ -1,3 +1,4 @@
+import logging
 import random
 import re
 
@@ -57,13 +58,19 @@ def get_backstory(cache):
         # if so, replace "you" with "they"
 
         for i, word in enumerate(words):
-            if word == "you":
+            if word == "you" or word == "you,":
+
+                # check if comma is needed
+                add = ""
+                if "," in word:
+                    add = ","
+
                 # check if next word is a verb, past or present tense
                 if any(part in words[i + 1] for part in THEY_WORDS):
-                    words[i] = "they"
+                    words[i] = "they" + add
 
                 elif any(part in words[i + 1] for part in THEM_WORDS):
-                    words[i] = "them"
+                    words[i] = "them" + add
 
 
         # update backstory with new words
@@ -90,16 +97,14 @@ def get_backstory(cache):
 
         else:
             update_one(cache, URL)
-            print(backstory)
-            # print whatever test failed
+            logging.info(backstory)
+            # logging.info whatever test failed
             if not tests["Length Check"]:
-                print(len(backstory))
-                print("Length Check Failed")
+                logging.info(len(backstory))
+                logging.info("Length Check Failed")
 
             elif not tests["Wrong Pronouns"]:
-                print("Pronouns Check Failed")
-
-            print("\n")
+                logging.info("Pronouns Check Failed")
 
 
     return backstory
