@@ -29,12 +29,14 @@
 | Name          | Description                                                     | Required |
 |---------------|-----------------------------------------------------------------|----------|
 | FLASK_APP     | Should be set to `introducing/app.py`                           | Y        |
-| FLASK_ENV     | Should be set to "development" or production                    | Y        |
+| FLASK_ENV     | Should be set to `development` or `production`                  | Y        |
 | TRUE_AGE      | TRUE for real AI Detection, FALSE for not, see [Here](https://labs.everypixel.com/api/account/balance) as there is a limit on usage) | N        |
 | CLIENT_ID     | The Client ID for [EveryPixel](https://labs.everypixel.com)     | N        |
 | CLIENT_SECRET | The Client Secret for [EveryPixel](https://labs.everypixel.com) | N        |
 
 ## Backend
+
+**For all of these tasks, please clone the repository first**
 
 To run as a test server:
 
@@ -48,6 +50,13 @@ To run as a production server:
 ```bash
 poetry install
 poetry run gunicorn --bind 0.0.0.0:5000 introducing.wsgi:app
+```
+
+To run in docker:
+
+```bash
+sudo docker-compose up -d --build
+sudo docker-compose logs -f
 ```
 
 # Maintainers
