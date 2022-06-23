@@ -3,7 +3,8 @@ import re
 
 import names
 
-from introducing.constants import MIN_BACKSTORY_LENGTH, NAMES, TENSES
+from introducing.constants import (EASTER_EGG_REPLACERS, MIN_BACKSTORY_LENGTH,
+                                   NAMES, REPLACERS, THEM_WORDS, THEY_WORDS)
 from introducing.urls import pre_download, update_one
 
 URL = "https://www.kassoon.com/dnd/backstory-generator/"
@@ -58,25 +59,47 @@ def get_backstory(cache):
         for i, word in enumerate(words):
             if word == "you":
                 # check if next word is a verb, past or present tense
-                print(word, words[i + 1])
+                if any(part in words[i + 1] for part in THEY_WORDS):
+                    words[i] = "they"
 
-                if "ed" in words[i + 1]:
-                    words[i + 1] = "they"
+                elif any(part in words[i + 1] for part in THEM_WORDS):
+                    words[i] = "them"
 
 
         # update backstory with new words
         backstory = " ".join(words)
 
         # Do other replacements
-        for change in TENSES:
+        for change in REPLACERS:
             backstory = backstory.replace(*change)
 
-        if len(backstory) > MIN_BACKSTORY_LENGTH and "you" not in backstory:
+        for change in EASTER_EGG_REPLACERS:
+            lower_check = change[0].lower()
+            upper_check = change[0].upper()
+
+            backstory = backstory.replace(lower_check, change[1])
+            backstory = backstory.replace(upper_check, change[1])
+
+        tests = {
+            "Length Check": len(backstory) > MIN_BACKSTORY_LENGTH,
+            "Wrong Pronouns": "you" not in backstory
+        }
+
+        if tests["Length Check"] and tests["Wrong Pronouns"]:
             break
 
         else:
             update_one(cache, URL)
             print(backstory)
+            # print whatever test failed
+            if not tests["Length Check"]:
+                print(len(backstory))
+                print("Length Check Failed")
+
+            elif not tests["Wrong Pronouns"]:
+                print("Pronouns Check Failed")
+
+            print("\n")
 
 
     return backstory

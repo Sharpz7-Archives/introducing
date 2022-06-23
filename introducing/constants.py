@@ -2,23 +2,42 @@
 https://www.goodhousekeeping.com/life/parenting/a31401884/gender-neutral-baby-names/
 """
 
-MIN_BACKSTORY_LENGTH = 170
+MIN_BACKSTORY_LENGTH = 150
 
 # Using some kind of brown corpus might make verb checking easier
-# TODO
-# - Create THEM var and THEY var for you following words
-# - Rename Tenses
-TENSES = [
+
+REPLACERS = [
     ("yourself", "themselves"),
     ("yours ", "theirs "),
     ("your ", "their "),
     ("Your ", "Their "),
     ("You", "They"),
     ("you.", "them."),
-    ("you were", "they were"),
-    ("you how", "them how"),
-    ("you to", "them to"),
+
+    # Mistake in backstory generator
+    ("ofcivilization", "of civilization"),
 ]
+
+EASTER_EGG_REPLACERS = [
+    ("wizard", "programmer"),
+    ("paladin", "COBOL Programmer"),
+    ("war", "art"),
+    ("magic", "programming"),
+    ("guild", "MLH Club"),
+    ("monster", "COBOL Programmer"),
+    ("religion", "Github Org"),
+    ("religious", "Github"),
+    ("faith", "Tech Stack"),
+    ("lord", "Senior Developer"),
+    ("crime", "Project Management"),
+    ("sword", "laptop"),
+    ("gods", "Linux Founders"),
+    ("lore", "C Code"),
+    ("hermit", "Visual Basic Dev")
+]
+
+THEM_WORDS = ["to", "how", "in", "the", "so", "survive"]
+THEY_WORDS = ["were", "ed", "ld", "nd", "ever", "became", "want", "woke"]
 
 NAMES = [
     "Bellamy",
