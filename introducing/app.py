@@ -39,16 +39,19 @@ def get_intro():
     logging.info("FINISHED")
 
     loc, background = location.get(cache)
-    logging.info("Location handled")
 
-    send["profile_picture"] = faces.get(cache)
+    profile_picture = faces.get(cache)
+    name = text.get_name()
+    age = text.get_age()
+    backstory = text.get_backstory(cache)
+
+    send["profile_picture"] = profile_picture
     send["location"] = loc
     send["background_image"] = background
-    send["name"] = text.get_name()
-    send["age"] = text.get_age()
-    send["backstory"] = text.get_backstory(cache)
+    send["name"] = name
+    send["age"] = age
+    send["backstory"] = backstory
     send["title"] = "Student"
-    logging.info("Backstory Handled")
 
     response = jsonify(send)
     response.headers.add('Access-Control-Allow-Origin', '*')
