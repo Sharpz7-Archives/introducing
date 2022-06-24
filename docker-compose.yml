@@ -8,6 +8,19 @@ services:
 
     env_file: .env
 
+  introducing_grpc:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+
+    env_file: .env
+    command: bash /entry/grpc.sh
+
+  introducing_react:
+    build:
+      context: ./frontend/introduction_frontend
+      dockerfile: ./Dockerfile
+
 networks:
   default:
       external:

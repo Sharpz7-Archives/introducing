@@ -11,6 +11,7 @@ services:
     volumes:
       - "mcaq_projects:/home/coder/code-server"
 
+
   introducing_grpc_dev:
     build:
       context: .
@@ -21,6 +22,13 @@ services:
 
     volumes:
       - "mcaq_projects:/home/coder/code-server"
+
+
+  introducing_react:
+    build:
+      context: ./frontend/introduction_frontend
+      dockerfile: ./Dockerfile
+
 
 volumes:
   mcaq_projects:

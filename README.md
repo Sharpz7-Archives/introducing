@@ -26,14 +26,14 @@
 
 ## Enviroment
 
-| Name               | Description                                                     | Required |
-|--------------------|-----------------------------------------------------------------|----------|
-| FLASK_APP          | Should be set to `introducing/app.py`                           | Y        |
-| FLASK_ENV          | Should be set to `development` or `production`                  | Y        |
-| TRUE_AGE           | `TRUE` for real AI Detection, `FALSE` for not, see [Here](https://labs.everypixel.com/api/account/balance) as there is a limit on usage) | N        |
-| CLIENT_ID          | The Client ID for [EveryPixel](https://labs.everypixel.com)     | N        |
-| CLIENT_SECRET      | The Client Secret for [EveryPixel](https://labs.everypixel.com) | N        |
-| DONT_DOWNLOAD_STUB | When set to `TRUE`, will not download [service.proto](https://github.com/Sharpz7/introducing/blob/main/proto/service.proto)         | N        |
+| Name                  | Description                                                     | Required |
+|-----------------------|-----------------------------------------------------------------|----------|
+| FLASK_APP             | Should be set to `introducing/app.py`                           | Y        |
+| FLASK_ENV             | Should be set to `development` or `production`                  | Y        |
+| TRUE_AGE              | `TRUE` for real AI Detection, `FALSE` for not, see [Here](https://labs.everypixel.com/api/account/balance) as there is a limit on usage) | N        |
+| CLIENT_ID             | The Client ID for [EveryPixel](https://labs.everypixel.com)     | N        |
+| CLIENT_SECRET         | The Client Secret for [EveryPixel](https://labs.everypixel.com) | N        |
+| DONT_DOWNLOAD_STUB    | When set to `TRUE`, will not download [service.proto](https://github.com/Sharpz7/introducing/blob/main/proto/service.proto)         | N        |
 
 ## Backend
 
@@ -70,13 +70,14 @@ To run a client, please see the README's for each client:
 
 ## Docker
 
-This will run both the flask backend and the grpc server
+This will run both the flask backend and the grpc server.
+
+**NOTE: This needs [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) to be installed!**
 
 To run in docker:
 
 ```bash
-sudo docker-compose up -d --build
-sudo docker-compose logs -f
+make docker_run
 ```
 
 ## Frontend
