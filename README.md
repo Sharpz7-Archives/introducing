@@ -20,7 +20,7 @@
 
 ![](https://files.mcaq.me/x02ar.jpg)
 
-### Uses [GRPC-IO](https://grpc.io/) and [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+### Uses [gRPC-IO](https://grpc.io/) and [Flask](https://flask.palletsprojects.com/en/2.1.x/)
 
 # Quickstart Guide
 
@@ -55,7 +55,7 @@ poetry install
 poetry run gunicorn --bind 0.0.0.0:5000 introducing.wsgi:app
 ```
 
-## GRPC
+## gRPC
 
 To run the grpc server:
 
@@ -64,6 +64,8 @@ poetry run python -m introducing.grpc_app
 ```
 
 To run a client, please see the README's for each client:
+
+**Note that the clients expect the [Docker gRPC Server](https://github.com/Sharpz7/introducing#docker) to be running**
 
 - [C#](https://github.com/Sharpz7/introducing/tree/main/clients/dotnet)
 - [Python](https://github.com/Sharpz7/introducing/tree/main/clients/python)
@@ -92,7 +94,7 @@ npm run start
 
 ## Docker
 
-This will run both the flask backend, the grpc server and the React Frontend.
+This will run both the flask backend, the gRPC server and the react frontend.
 
 **NOTE: This needs [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) to be installed!**
 

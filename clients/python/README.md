@@ -1,6 +1,6 @@
 # Intro Python Client
 
-Check how to start the server [here](https://github.com/Sharpz7/introducing).
+Check how to start the server [here](https://github.com/Sharpz7/introducing#docker).
 
 The client uses the service.proto file in [./proto/service.proto](https://github.com/Sharpz7/introducing/blob/main/proto/service.proto).
 
