@@ -13,6 +13,8 @@ names = "^0.3.0"
 gunicorn = "^20.1.0"
 grpcio-tools = "^1.47.0"
 grpcio = "^1.47.0"
+tomlkit = "^0.11.0"
+platformdirs = "^2.5.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

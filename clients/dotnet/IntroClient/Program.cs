@@ -3,7 +3,7 @@ using Grpc.Net.Client;
 using IntroClient;
 
 // The port number must match the port of the gRPC server.
-using var channel = GrpcChannel.ForAddress("http://localhost:50051");
+using var channel = GrpcChannel.ForAddress("http://introducing_grpc_dev:50051");
 
 var client = new Card.CardClient(channel);
 

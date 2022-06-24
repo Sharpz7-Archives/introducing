@@ -4,7 +4,7 @@ services:
   introducing:
     build:
       context: .
-      dockerfile: ./docker/flask.Dockerfile
+      dockerfile: ./docker/Dockerfile
 
     env_file: .env
 

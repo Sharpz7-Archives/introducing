@@ -10,7 +10,7 @@ class fetchCard(object):
     """
 
     def __init__(self):
-        self.channel = grpc.insecure_channel("localhost:50051")
+        self.channel = grpc.insecure_channel("introducing_grpc_dev:50051")
         self.stub = pb2_grpc.CardStub(self.channel)
 
     def get_card(self, no_of_cards):

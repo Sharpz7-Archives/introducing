@@ -4,13 +4,23 @@ services:
   introducing_dev:
     build:
       context: .
-      dockerfile: ./docker/dev.flask.Dockerfile
+      dockerfile: ./docker/dev.Dockerfile
 
     env_file: .env
 
     volumes:
-    - "mcaq_projects:/home/coder/code-server"
+      - "mcaq_projects:/home/coder/code-server"
 
+  introducing_grpc_dev:
+    build:
+      context: .
+      dockerfile: ./docker/dev.Dockerfile
+
+    env_file: .env
+    command: bash /entry/grpc.sh
+
+    volumes:
+      - "mcaq_projects:/home/coder/code-server"
 
 volumes:
   mcaq_projects:
