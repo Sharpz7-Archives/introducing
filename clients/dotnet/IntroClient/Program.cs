@@ -8,7 +8,7 @@ using var channel = GrpcChannel.ForAddress("http://localhost:50051");
 var client = new Card.CardClient(channel);
 
 var reply = await client.get_cardAsync(
-                  new request { NoOfCards = 1 });
+                  new request { NoOfCards = 2 });
 
 Console.WriteLine("Greeting: " + reply);
 // Console.WriteLine("Press any key to exit...");
