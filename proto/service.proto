@@ -4,6 +4,8 @@
 
 syntax = "proto3";
 
+option csharp_namespace = "IntroClient";
+
 // Incoming request from client
 message request {
    optional int64 no_of_cards = 1;
