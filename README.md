@@ -58,6 +58,22 @@ To run in docker:
 sudo docker-compose up -d --build
 sudo docker-compose logs -f
 ```
+## Frontend
+**To run the app clone the repository and navigate to the frontend folder**
+
+To get start 
+
+```bash
+install node [https://nodejs.org/en/download/]
+npm install
+npm install yarn
+```
+
+To get all dependency in the package.json
+
+```bash
+yarn install
+```
 
 # Maintainers
 
