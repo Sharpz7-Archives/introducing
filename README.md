@@ -59,6 +59,22 @@ sudo docker-compose up -d --build
 sudo docker-compose logs -f
 ```
 
+## Frontend
+
+To run the frontend:
+
+- [install node](https://nodejs.org/en/download/)
+- [install yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
+- [install mui](yarn add @mui/material @emotion/react @emotion/styled
+)
+
+**To get all the dependencies**
+
+```bash
+npm install
+yarn install
+```
+
 # Maintainers
 
 - [Adam McArthur](https://github.com/Sharpz7)
