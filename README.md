@@ -65,8 +65,7 @@ To run the frontend:
 
 - [install node](https://nodejs.org/en/download/)
 - [install yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
-- [install mui](yarn add @mui/material @emotion/react @emotion/styled
-)
+- [install mui](https://mui.com/material-ui/getting-started/installation/)
 
 **To get all the dependencies**
 
