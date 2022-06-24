@@ -94,7 +94,7 @@ npm run start
 
 ## Docker
 
-This will run both the flask backend, the gRPC server and the Reect Frontend.
+This will run both the flask backend, the gRPC server and the react frontend.
 
 **NOTE: This needs [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) to be installed!**
 
