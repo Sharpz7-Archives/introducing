@@ -1,0 +1,7 @@
+version: 1
+
+envfile: .env
+
+scripts:
+  run: |
+    dotnet run

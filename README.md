@@ -38,6 +38,8 @@
 
 **For all of these tasks, please clone the repository first**
 
+## Flask
+
 To run as a test server:
 
 ```bash
@@ -51,6 +53,23 @@ To run as a production server:
 poetry install
 poetry run gunicorn --bind 0.0.0.0:5000 introducing.wsgi:app
 ```
+
+## GRPC
+
+To run the grpc server:
+
+```bash
+poetry run python -m introducing.grpc_app
+```
+
+To run a client, please see the README's for each client:
+
+- [C#](https://github.com/Sharpz7/introducing/clients/dotnet)
+- [Python](https://github.com/Sharpz7/introducing/clients/python)
+
+## Docker
+
+This will run both the flask backend and the grpc server
 
 To run in docker:
 

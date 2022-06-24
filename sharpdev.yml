@@ -4,12 +4,29 @@ envfile: .env
 scripts:
   poetry: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
 
+  stubs: |
+    curl -sSL https://files.mcaq.me/4r9c1.proto > ./introducing/service.proto
+
+    poetry run python -m grpc_tools.protoc -I. --python_out=./introducing/proto --grpc_python_out=./introducing/proto --proto_path=./introducing/ service.proto
+
+    sed -i 's/import service_pb2/import introducing.proto.service_pb2/g' introducing/proto/service_pb2_grpc.py
+
+    echo "# pylint: disable=all" >> introducing/proto/service_pb2.py
+    echo "# flake8: noqa" >> introducing/proto/service_pb2.py
+
+    echo "# pylint: disable=all" >> introducing/proto/service_pb2_grpc.py
+    echo "# flake8: noqa" >> introducing/proto/service_pb2_grpc.py
+
   tests: |
     poetry run pytest ./tests/
 
-  run: |
+  flask: |
     sudo docker-compose -f docker-compose.dev.yml up --build -d
     sudo docker-compose -f docker-compose.dev.yml logs -f
 
-  stop: |
+  flask_stop: |
     sudo docker-compose -f docker-compose.dev.yml down
+
+  grpc: |
+    sharpdev stubs
+    poetry run python -m introducing.grpc_app

@@ -1,0 +1,19 @@
+version: 1
+envfile: .env
+
+scripts:
+  stubs: |
+    curl -sSL https://files.mcaq.me/4r9c1.proto > ./intro_client/service.proto
+
+    poetry run python -m grpc_tools.protoc -I. --python_out=./intro_client/proto --grpc_python_out=./intro_client/proto --proto_path=./intro_client/ service.proto
+
+    sed -i 's/import service_pb2/import intro_client.proto.service_pb2/g' intro_client/proto/service_pb2_grpc.py
+
+    echo "# pylint: disable=all" >> intro_client/proto/service_pb2.py
+    echo "# flake8: noqa" >> intro_client/proto/service_pb2.py
+
+    echo "# pylint: disable=all" >> intro_client/proto/service_pb2_grpc.py
+    echo "# flake8: noqa" >> intro_client/proto/service_pb2_grpc.py
+
+  run: |
+    poetry run python -m intro_client

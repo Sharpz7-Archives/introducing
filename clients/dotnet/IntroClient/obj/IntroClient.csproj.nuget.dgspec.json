@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/coder/code-server/MLH/hackathons/introducing/clients/dotnet/IntroClient/IntroClient.csproj": {}
+  },
+  "projects": {
+    "/home/coder/code-server/MLH/hackathons/introducing/clients/dotnet/IntroClient/IntroClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/coder/code-server/MLH/hackathons/introducing/clients/dotnet/IntroClient/IntroClient.csproj",
+        "projectName": "IntroClient",
+        "projectPath": "/home/coder/code-server/MLH/hackathons/introducing/clients/dotnet/IntroClient/IntroClient.csproj",
+        "packagesPath": "/home/coder/.nuget/packages/",
+        "outputPath": "/home/coder/code-server/MLH/hackathons/introducing/clients/dotnet/IntroClient/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/coder/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.21.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.46.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.47.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

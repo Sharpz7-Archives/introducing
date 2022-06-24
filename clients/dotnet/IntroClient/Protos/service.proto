@@ -1,0 +1,35 @@
+// PLEASE NOTE
+// THIS FILE IS DOWNLOADED
+// BY SHARPDEV
+
+syntax = "proto3";
+
+option csharp_namespace = "IntroClient";
+
+// Incoming request from client
+message request {
+   optional int64 no_of_cards = 1;
+}
+
+// Response to be returned by API service
+message personCard {
+   optional string name = 1;
+   optional string profile_picture = 2;
+   optional string location = 3;
+   optional string background_image = 4;
+   optional int64  age = 5;
+   optional string backstory = 6;
+   optional string title = 7;
+}
+
+message personCards {
+   repeated personCard card = 1;
+}
+
+// Service definition for Card
+service Card {
+
+   // get_card method definition
+   rpc get_card (request) returns (personCards) {};
+
+}
