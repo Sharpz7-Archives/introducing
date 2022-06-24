@@ -1,10 +1,12 @@
 version: '3.7'
 
 services:
-  flask_demo:
+  introducing:
     build:
       context: .
-      dockerfile: back.Dockerfile
+      dockerfile: ./docker/Dockerfile
+
+    env_file: .env
 
 networks:
   default:

@@ -1,36 +1,58 @@
-from flask import Flask, jsonify, request
-from introducing import faces
+import logging
+import os
 
-app = Flask(__name__)
+from flask import Flask, jsonify
 
-incomes = [
-    { 'description': 'salary', 'amount': 50000 }
-]
+from introducing import faces, location, text, urls
 
+app = Flask(__name__, static_folder="./static")
+
+cache = {}
+
+if os.environ["FLASK_ENV"] == "development":
+    app.debug = True
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
 @app.route('/')
-def get_incomes():
+def default():
     """
     Returns all incomes
     """
 
-    return jsonify(incomes)
+    return app.send_static_file('default.html')
 
 
-@app.route('/incomes', methods=['POST'])
-def add_income():
+@app.route('/introducing', methods=['GET'])
+def get_intro():
     """
-    Adds a new income
-    """
-
-    incomes.append(request.get_json())
-    return '', 204
-
-
-@app.route('/face')
-def get_face():
-    """
-    Returns a fake face
+    Returns an Introduction of someone
     """
 
-    return faces.get_fake_face()
+    send = {}
+
+    logging.info("UPDATING CACHE")
+    urls.update_cache(cache)
+    logging.info("FINISHED")
+
+    loc, background = location.get(cache)
+    profile_picture = faces.get(cache)
+    name = text.get_name()
+    title = text.get_title()
+    age = text.get_age(profile_picture)
+    backstory = text.get_backstory(cache)
+
+    send["profile_picture"] = profile_picture
+    send["location"] = loc
+    send["background_image"] = background
+    send["name"] = name
+    send["age"] = age
+    send["backstory"] = backstory
+    send["title"] = title
+
+    response = jsonify(send)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
