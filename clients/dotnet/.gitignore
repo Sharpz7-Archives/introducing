@@ -1,0 +1,6 @@
+core
+.env
+IntroClient.pdb
+IntroClient.dll
+Service.cs
+ServiceGrpc.cs

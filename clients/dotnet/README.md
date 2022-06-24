@@ -1,0 +1,5 @@
+# USAGE
+
+```bash
+dotnet run
+```

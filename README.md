@@ -26,17 +26,20 @@
 
 ## Enviroment
 
-| Name          | Description                                                     | Required |
-|---------------|-----------------------------------------------------------------|----------|
-| FLASK_APP     | Should be set to `introducing/app.py`                           | Y        |
-| FLASK_ENV     | Should be set to `development` or `production`                  | Y        |
-| TRUE_AGE      | TRUE for real AI Detection, FALSE for not, see [Here](https://labs.everypixel.com/api/account/balance) as there is a limit on usage) | N        |
-| CLIENT_ID     | The Client ID for [EveryPixel](https://labs.everypixel.com)     | N        |
-| CLIENT_SECRET | The Client Secret for [EveryPixel](https://labs.everypixel.com) | N        |
+| Name               | Description                                                     | Required |
+|--------------------|-----------------------------------------------------------------|----------|
+| FLASK_APP          | Should be set to `introducing/app.py`                           | Y        |
+| FLASK_ENV          | Should be set to `development` or `production`                  | Y        |
+| TRUE_AGE           | `TRUE` for real AI Detection, `FALSE` for not, see [Here](https://labs.everypixel.com/api/account/balance) as there is a limit on usage) | N        |
+| CLIENT_ID          | The Client ID for [EveryPixel](https://labs.everypixel.com)     | N        |
+| CLIENT_SECRET      | The Client Secret for [EveryPixel](https://labs.everypixel.com) | N        |
+| DONT_DOWNLOAD_STUB | When set to `TRUE`, will not download [service.proto](https://github.com/Sharpz7/introducing/blob/main/proto/service.proto)         | N        |
 
 ## Backend
 
 **For all of these tasks, please clone the repository first**
+
+## Flask
 
 To run as a test server:
 
@@ -51,6 +54,23 @@ To run as a production server:
 poetry install
 poetry run gunicorn --bind 0.0.0.0:5000 introducing.wsgi:app
 ```
+
+## GRPC
+
+To run the grpc server:
+
+```bash
+poetry run python -m introducing.grpc_app
+```
+
+To run a client, please see the README's for each client:
+
+- [C#](https://github.com/Sharpz7/introducing/clients/dotnet)
+- [Python](https://github.com/Sharpz7/introducing/clients/python)
+
+## Docker
+
+This will run both the flask backend and the grpc server
 
 To run in docker:
 
