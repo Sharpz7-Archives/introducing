@@ -68,17 +68,6 @@ To run a client, please see the README's for each client:
 - [C#](https://github.com/Sharpz7/introducing/tree/main/clients/dotnet)
 - [Python](https://github.com/Sharpz7/introducing/tree/main/clients/python)
 
-## Docker
-
-This will run both the flask backend and the grpc server.
-
-**NOTE: This needs [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) to be installed!**
-
-To run in docker:
-
-```bash
-make docker_run
-```
 
 ## Frontend
 
@@ -93,6 +82,24 @@ To run the frontend:
 ```bash
 npm install
 yarn install
+```
+
+Then run
+
+```bash
+npm run start
+```
+
+## Docker
+
+This will run both the flask backend, the grpc server and the Reect Frontend.
+
+**NOTE: This needs [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) to be installed!**
+
+To run in docker:
+
+```bash
+make docker_run
 ```
 
 # Maintainers
