@@ -65,8 +65,8 @@ poetry run python -m introducing.grpc_app
 
 To run a client, please see the README's for each client:
 
-- [C#](https://github.com/Sharpz7/introducing/clients/dotnet)
-- [Python](https://github.com/Sharpz7/introducing/clients/python)
+- [C#](https://github.com/Sharpz7/introducing/tree/main/clients/dotnet)
+- [Python](https://github.com/Sharpz7/introducing/tree/main/clients/python)
 
 ## Docker
 
