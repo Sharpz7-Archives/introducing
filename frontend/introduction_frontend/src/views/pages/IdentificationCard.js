@@ -11,7 +11,7 @@ function IdentificationCard() {
     useEffect(() => {
         const getRes = async () => {
             try {
-                const url = 'https://dev2.mcaq.me/introducing';
+                const url = 'https://api-intro.mcaq.me/';
                 const res = await fetch(url, {
                     method: 'GET'
                 });

@@ -20,11 +20,11 @@ grpc.stubs:
 grpc: grpc.stubs
 	poetry run python -m introducing.grpc_app
 
-flask:
+docker_run:
 	sudo docker-compose -f docker-compose.dev.yml up --build -d ;\
     sudo docker-compose -f docker-compose.dev.yml logs -f
 
-flask_stop:
+docker_stop:
 	sudo docker-compose -f docker-compose.dev.yml down
 
 testing:

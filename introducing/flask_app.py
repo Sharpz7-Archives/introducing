@@ -17,16 +17,8 @@ if os.environ["FLASK_ENV"] == "development":
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
-@app.route('/')
-def default():
-    """
-    Returns all incomes
-    """
 
-    return app.send_static_file('default.html')
-
-
-@app.route('/introducing', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_intro():
     """
     Returns an Introduction of someone

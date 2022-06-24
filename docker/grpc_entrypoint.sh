@@ -1,5 +1,7 @@
 #/bin/bash
 
+rm -r /sharpnet
+
 if [ "$$DONT_DOWNLOAD_STUB" != "TRUE" ]; then \
     curl -sSL https://raw.githubusercontent.com/Sharpz7/introducing/main/proto/service.proto > ./introducing/service.proto
 fi; \
